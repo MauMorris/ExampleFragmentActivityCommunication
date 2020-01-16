@@ -59,13 +59,10 @@ public class BodyPartFragment extends Fragment {
             mImageIds = savedInstanceState.getIntegerArrayList(IMAGE_ID_LIST);
             mListIndex = savedInstanceState.getInt(LIST_INDEX);
         }
-
         // Inflate the Android-Me fragment layout
         View rootView = inflater.inflate(R.layout.fragment_body_part, container, false);
-
         // Get a reference to the ImageView in the fragment layout
-        final ImageView imageView = (ImageView) rootView.findViewById(R.id.body_part_image_view);
-
+        final ImageView imageView = rootView.findViewById(R.id.body_part_image_view);
         // If a list of image ids exists, set the image resource to the correct item in that list
         // Otherwise, create a Log statement that indicates that the list was not found
         if(mImageIds != null){
@@ -91,14 +88,12 @@ public class BodyPartFragment extends Fragment {
         } else {
             Log.v(TAG, "This fragment has a null list of image id's");
         }
-
         // Return the rootView
         return rootView;
     }
 
     // Setter methods for keeping track of the list images this fragment can display and which image
     // in the list is currently being displayed
-
     public void setImageIds(List<Integer> imageIds) {
         mImageIds = imageIds;
     }
@@ -115,6 +110,4 @@ public class BodyPartFragment extends Fragment {
         currentState.putIntegerArrayList(IMAGE_ID_LIST, (ArrayList<Integer>) mImageIds);
         currentState.putInt(LIST_INDEX, mListIndex);
     }
-
-
 }
